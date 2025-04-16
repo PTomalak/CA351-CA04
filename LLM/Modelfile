@@ -1,6 +1,6 @@
 # Specify the base model GGUF file
-# IMPORTANT: Replace './unsloth.f16.gguf' with the actual path to your downloaded GGUF file if different from current directory
-FROM ./unsloth.f16.gguf
+# Replace './6502_coder.q8.gguf' with the actual path to your downloaded GGUF file if different from current directory
+FROM ./6502_coder.q8.gguf
 
 # Set the chat template (must match the one used in training)
 # Qwen 2.5 template structure
