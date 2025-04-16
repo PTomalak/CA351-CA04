@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cl65 -t none "$1" -C /usr/local/bin/none.cfg
+
+filename="${1%.asm}"
+
+qemu-system-6502 -bios "$filename" 2>/dev/null
+
+rm $filename $filename.o

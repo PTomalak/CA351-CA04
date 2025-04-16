@@ -1,0 +1,25 @@
+# Specify the base model GGUF file
+# IMPORTANT: Replace './unsloth.f16.gguf' with the actual path to your downloaded GGUF file if different from current directory
+FROM ./unsloth.f16.gguf
+
+# Set the chat template (must match the one used in training)
+# Qwen 2.5 template structure
+TEMPLATE """<|im_start|>system
+{{ .System }}<|im_end|>
+<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+
+# Set model parameters
+PARAMETER stop "<|im_start|>system"
+PARAMETER stop "<|im_start|>user"
+PARAMETER stop "<|im_end|>"
+
+# Set a default system prompt (optional)
+SYSTEM """You are a helpful assistant specialized in generating 6502 assembly language."""
+
+
+# Set the generation parameters
+PARAMETER temperature 0.3
+PARAMETER top_p 0.9
